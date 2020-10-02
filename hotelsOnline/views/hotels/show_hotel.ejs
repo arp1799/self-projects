@@ -1,0 +1,161 @@
+<%- include("../partials/header") %>
+<div class="container">
+        <div class="row">
+                <div class="col-md-3">
+                        <p class="lead">About Author</p>
+                        <div class="list-group-item">
+                            <h4><%= user.firstName +" "+user.lastName %></h4>
+                            <div class="img-thumbnail">
+                                <img  src="<%= user.avatar %>" alt="user profile image"/>
+                                <caption>
+                                    <p><h6  style="text-align:center; margin-bottom: 0em;"><%= user.username %></h6></p>
+                                </caption>
+                            </div>
+                            <p style="text-align:center; margin-bottom: 0em;"><a href="/users/<%=hotel.author.id %>">View Profile</a></p>
+                        </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="img-thumbnail">
+                            <img class=" img-fluid" src="<%= hotel.image %>"/>
+                            <div class="caption">
+                                    <h4 class="float-right">Rs <%= hotel.price %>/night</h4>
+                                    <h1><a><%= hotel.name %></a></h1>
+                                    <p>
+                                        <em>Submitted By: <a href="/users/<%=hotel.author.id %>"> <%= hotel.author.username %></a> <p><%= moment(hotel.createdAt).fromNow() %></p></em>
+                                    </p>
+                                    <p>
+                                                <%= hotel.desc %>
+                                    </p>
+                                    <!-- <div class="pull-right">
+                                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+                                                data-target="#campgroundLikes">
+                                            <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= hotel.likes.length %></span>
+                                        </button>
+                                    </div> -->
+                                    <div style="padding-bottom: 10px;">
+                                        <form action="/hotels/<%= hotel._id %>/like" method="POST">
+                                            <div class="btn-group">
+                                                <% if (currUser && hotel.likes.some(function (like) {
+                                                    return like.equals(currUser._id)
+                                                })) { %>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-thumbs-up"></i> Liked (<%= hotel.likes.length %>)
+                                                </button>
+                                                <% } else { %>
+                                                <button class="btn btn-sm btn-secondary">
+                                                    <i class="fas fa-thumbs-up"></i> Like (<%= hotel.likes.length %>)
+                                                </button>
+                                                <% } %>
+                                                <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
+                                                        data-target="#hotelLikes">See more details
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <% if(currUser && hotel.author.id.equals(currUser._id)||currUser && currUser.isAdmin) { %>
+                                    <a class="btn btn-md btn-success" href="/hotels/<%= hotel._id %>/edit">Edit Hotel</a>
+                                    <form class="delete-form" action="/hotels/<%=hotel._id%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-md btn-danger">DELETE</button>
+                                    </form>
+                                    <%}%>
+                            </div>
+                    </div>
+                    <div class="card">
+                            
+                            <div style="padding:0.5em;" class="thumbnail">
+                                <div class="caption-full">
+                                    <% if (hotel.rating === 0) { %>
+                                    <h5>
+                                        <em>No reviews yet.</em>
+                                    </h5>
+                                    <% } else { %>
+                                    <p>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star <% if (hotel.rating > 1.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (hotel.rating > 2.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (hotel.rating > 3.5) { %> checked <% } %>"></span>
+                                        <span class="fa fa-star <% if (hotel.rating > 4.5) { %> checked <% } %>"></span>
+                                        <em>(total comments: <%= hotel.comments.length %>)</em>
+                                    </p>
+                                    <p>
+                                        Current hotel rating: <strong><%= hotel.rating.toFixed(2) %></strong>
+                                    </p>
+                                    <div class="text-right">
+                                        <a class="btn btn-md btn-success" href="/hotels/<%= hotel._id %>/comments/new">Add comment</a>
+                                        
+                                    </div>
+                                    <p><h4>Latest reviews for this campground:</h4></p>
+                                    <hr style="margin-top: 0;">
+                                    <% hotel.comments.slice(0, 5).forEach(function(review){ %>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                                            
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p style="text-align: justify; word-wrap: break-word;">
+                                                <%= review.text %>
+                                            </p>
+                                            <div style="float:left;">
+                                                <% if(currUser&&review.author.id.equals(currUser._id)||currUser && currUser.isAdmin) { %>
+                                                    <a  class="btn btn-sm btn-success" href="/hotels/<%= hotel._id %>/review/<%= review._id%>/edit">Edit |</a>
+                                                    <form class="delete-form" action="/hotels/<%=hotel._id%>/review/<%= review._id%>?_method=DELETE" method="POST">
+                                                        <button  class="btn btn-sm btn-danger" style="background:none;">Delete</button>
+                                                    </form>
+                                                <%}%>
+                                            </div>
+                                            <div style="float:right;" class="text-right"><div>Review by: <strong><%= review.author.username %></strong></div></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <% }); %>
+                                    <div style="margin-bottom: 10px;">
+                                        <h4><a href="/hotes/<%= hotel._id %>/allcomments"><i class="fa fa-search" aria-hidden="true"></i> See all reviews</a></h4>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+        </div>
+</div>
+<div id="hotelLikes" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Hotel likes: <%= hotel.likes.length %></h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Liked by:</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% hotel.likes.forEach(function(like) { %>
+                                    <tr>
+                                        <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.username %></td>
+                                    </tr>
+                                <% }); %>
+                                <% if (hotel.likes.length === 0) { %>
+                                    <tr>
+                                        <td><em>No likes yet.</em></td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<%- include("../partials/footer") %>

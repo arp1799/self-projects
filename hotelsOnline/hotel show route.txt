@@ -1,0 +1,17 @@
+router.get("/:id",(req,res)=>{
+    Hotel.findById(req.params.id).populate("comments likes").exec((err,hotel)=>{
+        if(err)
+        {console.log("there is error");    console.log(err);}
+        else
+        {console.log(hotel);
+        
+            User.findById(hotel.author.id,(err,fuser)=>{
+                if(err)
+                    console.log(err.message);
+                else
+                {res.render("hotels/show_hotel",{hotel:hotel,user:fuser});}
+            });
+        }
+    });
+    
+});

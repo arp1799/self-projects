@@ -1,0 +1,39 @@
+.mainbox{
+    width:30%;
+    background-color:blueviolet;
+    height: 200px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    
+    
+
+}
+
+.img{
+   
+    float: left;
+    grid-area: 1 / 1 / 7/ 4;
+    margin-right: 15px;
+    width:150px;
+    height: 200px;
+    display: grid;
+    align-content: center;
+    
+    
+}
+.laundryimage{
+    width:150px;
+    height: 200px;
+    border: 2px solid red;
+    
+   
+}
+
+
+.uppersection{
+    grid-area: 1/4/4/7;
+}
+
+.lowersection{
+    grid-area: 4/4/7/7;
+}

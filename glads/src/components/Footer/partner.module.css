@@ -1,0 +1,157 @@
+.bg {
+    background-image: url("https://wallpaperstock.net/wallpapers/thumbs1/54218hd.jpg");
+  
+  
+    min-height: 720px;
+  
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .form{
+      padding-top: 20px;
+      
+      box-align:right;
+  }
+
+  .listed{
+      text-align: center;
+      margin-top: 50px;
+      letter-spacing: 5px;
+  }
+
+  .liste{
+    text-align: center;
+    margin-bottom: 100px;
+    letter-spacing: 5px;
+    color: bisque;
+    font-size: 20px;
+}
+  .gridContainer{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto auto ; 
+    grid-gap: 10px;
+    padding: 10px;
+    margin-top: 100px;
+    
+    margin-bottom: 75px;
+  }
+  .gridContainer1{
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: auto auto auto ; 
+    grid-gap: 10px;
+    padding: 10px;
+    margin-top: 100px;
+    
+    margin-bottom: 75px;
+  }
+
+  .gridItem {
+    text-align: left;
+    padding: 20px 0;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-right: 20px;
+  
+  }
+
+  .key{
+    background-image: url("http://www.wallpaperbetter.com/wallpaper/417/673/89/black-texture-background-1080P-wallpaper-middle-size.jpg");
+  
+  
+    max-height: 680px;
+    margin-top: 30px;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: grid;
+      justify-content: center;
+      padding: 50px;
+  }
+  
+
+  .sutext{
+      max-width: 250px;
+      margin-top: 20px;
+      text-align: center;
+  }
+
+  .imga{
+      display: grid;
+      justify-content: center;
+  }
+
+ 
+  
+  @media only screen and (max-width: 1022px) {
+    
+  
+    .gridContainer{
+      grid-template-columns: auto auto ; 
+      justify-content: space-around;
+  
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    
+  
+    .gridContainer{
+      grid-template-columns: auto; 
+      justify-content: space-around;
+      align-items: center;
+      align-content: center;
+      padding: 1px;
+      
+  
+    }
+  
+    .gridContainer1{
+      grid-template-columns: auto; 
+      justify-content: space-evenly;
+  
+    }
+    ul{
+    
+      padding: 0px;
+    }
+    .gridItem{
+      
+      padding: 0px;
+    }
+    .social{
+      visibility: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .keyima{
+   
+      width:400px;
+    }
+  }
+  @media only screen and (min-width: 603px) {
+    .keyima{
+   
+      width:600px;
+    }
+  }
+  @media only screen and (min-width: 700px) {
+    .keyima{
+   
+      width:730px;
+    }
+  }
+  @media only screen and (min-width: 900px) {
+    .keyima{
+   
+      width:950px;
+    }
+  }

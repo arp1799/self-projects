@@ -1,0 +1,101 @@
+<%- include("../partials/header") %>
+
+
+<div class="container">
+<header class="jumbotron">
+    <div class="container">
+        <h1>Welcome To HotelLite </h1>
+        <p>Here you will get hand-picked hotels all over from india....</p>
+        <a class="btn btn-primary btn-md" href="/hotels/newhotel">Add Hotel</a></button>
+        <p>
+            <form action="/hotels" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Hotel Search...." class="form-control"/>
+                    <input type="submit" value="search" class="btn btn-primary"/>
+
+                </div>
+            </form>
+        </p>
+    </div>
+</header>
+
+<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <% list.forEach((hotel)=>{ %>
+    <div class="col-md-3 col-sm-6">
+        <div style="border: 1px solid;
+                    padding: 10px;
+                    box-shadow: 5px 10px #888888; margin: 1em;" class="img-thumbnail card hotel-card">
+            <img style="width:100%; height: 150px;" src="<%= hotel.image %>"/>
+            <caption>
+                <h6><%= hotel.name %></h6>
+                <div style="max-width:100%">
+
+                    <% if (hotel.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                        <% } else { %>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star <% if (hotel.rating > 2.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (hotel.rating > 1.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (hotel.rating > 3.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (hotel.rating > 4.5) { %> checked <% } %>"></span>
+                            <% } %>
+                </div>
+                <div>
+                        <span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= hotel.likes.length %></span>
+                </div>
+            </caption>
+            <p>
+                <a class="btn btn-primary" href="/hotels/<%= hotel._id %>">More Detail</a>
+            </p>
+        </div>
+    </div>
+    <% }); %>   
+</div>
+
+</div>
+
+<nav aria-label="Page navigation">
+    <% if (pages && pages > 1) { %>
+    <ul class="pagination justify-content-center">
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link">1</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/hotels<%if(search){%>?search=<%=search%><%}%>">1</a></li>
+        <% } %>
+ 
+        <% if (current == 1) { %>
+        <li class="page-item disabled"><a class="page-link">«</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/hotels?page=<%= Number(current) - 1 %><%if(search){%>?search=<%=search%><%}%>">«</a></li>
+        <% } %>
+ 
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <li class="active"><a class="page-link"><%= i %></a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/hotels?page=<%= i %><%if(search){%>?search=<%=search%><%}%>"><%= i %></a></li>
+        <% } %>
+        <% if (i == Number(current) + 4 && i < pages) { %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+        <% } %>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link">»</a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/hotels?page=<%= Number(current) + 1 %><%if(search){%>?search=<%=search%><%}%>">»</a></li>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <li class="page-item disabled"><a class="page-link"><%= pages %></a></li>
+        <% } else { %>
+        <li><a class="page-link" href="/hotels?page=<%= pages %><%if(search){%>?search=<%=search%><%}%>"><%= pages %></a></li>
+        <% } %>
+    </ul>
+    <% } %>
+</nav>
+<%- include("../partials/footer") %>

@@ -1,0 +1,36 @@
+.gridContainer{
+    display: grid;
+    
+    grid-template-columns: 150px auto ; 
+    grid-gap: 10px;
+   
+    padding: 10px;
+    }
+
+
+  .gridItem {
+    text-align: left;
+    padding: 20px 0;
+    font-size: 17px;
+  
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .gridContainer{
+      display: grid;
+      
+      grid-template-columns: auto ; 
+      grid-gap: 10px;
+     
+      padding: 10px;
+      }
+      .sidebar{
+        display:inline;
+        margin-right: 15px;
+        margin-left: 2px;
+      
+      }
+  }
+
+
+  

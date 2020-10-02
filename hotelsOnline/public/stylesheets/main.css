@@ -1,0 +1,40 @@
+body{
+    background-color: aliceblue;
+
+}
+.img-thumbnail img{
+    width:100%;
+}
+.img-thumbnail{
+    padding: 0;
+}
+.img-thumbnail .caption{
+    padding: 9px;
+}
+.card .text-right{
+    padding: 0.5em;
+}
+.card .row{
+    padding: 0.5em;
+}
+.delete-form{
+    display: inline;
+}
+
+.profile_caption{
+    padding: 1em;
+}
+.user_image{
+    margin-bottom: 0.5em;
+    display: block;
+}
+.follow_button{
+    margin: 0.5em;
+}
+
+.hotel-card:hover{
+    transform: scale(1.1);
+    
+
+    
+}

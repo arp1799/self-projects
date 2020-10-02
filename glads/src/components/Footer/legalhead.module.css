@@ -1,0 +1,31 @@
+.container {
+    margin-left: 9rem;
+    margin-right: 2rem;
+    max-width: 1200px;
+    margin-top: 2px;
+   
+  }
+.sexy_line{ 
+    display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:black;
+    background: linear-gradient(0.75turn,#ebf8e1, #333, #ebf8e1);
+    margin-top: 8px;
+   
+}
+
+.gridContainer{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto ; 
+   }
+
+
+   @media only screen and (max-width: 1200px) {
+    .container {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+  }

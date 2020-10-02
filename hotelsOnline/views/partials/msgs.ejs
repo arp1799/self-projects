@@ -1,0 +1,14 @@
+<% if(errmsg && errmsg.length>0){ %>
+    <div class="container">
+      <div class="alert alert-danger" role="alert">
+          <%=errmsg %>
+      </div>
+    </div>
+  <%}%>
+  <% if(sucmsg && sucmsg.length>0){ %>
+    <div class="container">
+      <div class="alert alert-success" role="alert">
+          <%=sucmsg %>
+      </div>
+    </div>
+  <%}%>

@@ -1,0 +1,43 @@
+<%- include("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3><%= user.firstName +" "+user.lastName %></h3>
+            <div class="img-fluid img-thumbnail">
+                <img class="user_image" src="<%= user.avatar %>" alt="user profile image"/>
+                <caption><a class="follow_button" href="mailto:<%=user.email%>"><%= user.email %></a><a href="/follow/<%= user.id %>"><button class="btn  btn-primary follow_button"><i style="margin-right:0.1em" class="fas fa-user-plus"></i>Follow </button></a></caption>
+            </div>
+            <div>
+                <h4 style="margin-top:1em">About</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quod amet molestias ducimus quo repudiandae! Quia accusantium voluptates nihil eaque nulla consequuntur fuga illum laudantium, explicabo quasi sunt doloribus tenetur?
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+        <ul>
+            <h3>Hotels</h3>
+                    <% hotels.forEach((hotel)=>{ %>
+                        <div class="card mb-3" style="min-width: 810px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                   <img  src="<%= hotel.image %>" class="card-img img-thumbnail profile_images" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%=hotel.name %></h5>
+                                        <p class="card-text">Rs <%= hotel.price %> /night</p>
+                                        <p class="card-text"><small class="text-muted">Last updated <%= moment(hotel.createdAt).fromNow() %> ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <li><a href="/hotels/<%=hotels._id%>"></a></li>
+                    <% }); %>
+        </ul>
+        </div>
+        
+    </div>
+</div>
+    
+<%- include("../partials/footer") %>

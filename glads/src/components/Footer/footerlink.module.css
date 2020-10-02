@@ -1,0 +1,36 @@
+.linkhead{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    
+}
+.links{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+a{
+    text-decoration: none;
+}
+a:link {
+    color: #333;
+    
+  }
+
+  a:visited {
+    color: #333;
+  }
+
+  a:hover {
+    color: rgba(255, 56, 6, 0.671);
+  }
+  
+  /* selected link */
+  a:active {
+    color: rgba(255, 131, 59,.5);
+  }
+
+  ul{
+  
+      padding: 10px;
+  }
