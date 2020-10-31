@@ -8,7 +8,7 @@ frontend astronomy website project with Ayush Rawal(MENN stack)(react.js ->Next.
 simple brick game made in python
 
 #hotellite
-  glads- laundry service provider website created on gatsby.js?(frontend)
+  glads- laundry service provider website created on gatsby.js(frontend)
   
   hotellite- hotel info related website created in EJS,Nodejs,mongoDb,Express
   
